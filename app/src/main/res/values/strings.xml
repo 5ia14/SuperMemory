@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SuperMemory</string>
+    <string name="bHomeCredits">Credits</string>
+    <string name="bHomeMultiP">Multi Player</string>
+    <string name="bHomeSingleP">Single Player</string>
 </resources>
