@@ -13,6 +13,7 @@
     <string name="multiPlayBtnT">Multi Player</string>
     <string name="creditBtnT">Credits</string>
     <string name="lol">Hello</string>
+    <string name="restart">Restart</string>
     <!-- Buttons End -->
 
 </resources>

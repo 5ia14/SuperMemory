@@ -27,10 +27,7 @@ public class Card {
     }
 
     public boolean compareCard(Card c){
-        if(c.image.equals(image) && (value == c.value)){
-            return true;
-        }
-        return false;
+        return c.image.equals(image) && (value == c.value);
     }
 
     public void flipCard(boolean flip){
