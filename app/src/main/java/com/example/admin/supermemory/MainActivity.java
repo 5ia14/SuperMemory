@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSinglePlayer(View view) {
-        setContentView(R.layout.single_player);
+        setContentView(R.layout.play);
     }
 
     public void showMain(View view) {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.multiplay);
     }
 }
