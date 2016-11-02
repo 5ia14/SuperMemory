@@ -33,6 +33,7 @@
                 android:layout_height="60dp"
                 android:text="@string/multiPlayBtnT"
                 android:id="@+id/multiPlayer"
+                android:onClick="showMultiPlayer"
                 android:layout_gravity="center" />
 
             <Button
