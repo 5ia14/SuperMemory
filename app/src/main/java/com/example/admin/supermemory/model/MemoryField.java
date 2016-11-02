@@ -17,7 +17,7 @@ public class MemoryField {
     public void setCards(){
         Card[] cardsL = new Card[15];
         for(int i = 0; i < 14; i++){
-           cardsL = new Card(i, R.drawable.hallo);
+            cardsL = new Card(i, R.drawable.0)
         }
 
         int counter = 1;
