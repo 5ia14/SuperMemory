@@ -15,5 +15,19 @@ public class Card {
         this.image = image;
     }
 
+    public int getValue() {
+        return value;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public boolean compareCard(Card c){
+        if(c.image.equals(image) && (value == c.value)){
+            return true;
+        }
+        return false;
+    }
 
 }
