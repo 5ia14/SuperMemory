@@ -9,8 +9,37 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.admin.supermemory.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <FrameLayout
+            android:layout_width="389dp"
+            android:layout_height="222dp"
+            android:layout_gravity="center">
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:text="Single Player"
+                android:id="@+id/singlePlayer"
+                android:layout_gravity="center_horizontal|top" />
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:text="Multi Player"
+                android:id="@+id/multiPlayer"
+                android:layout_gravity="center" />
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:text="Credits"
+                android:id="@+id/credits"
+                android:layout_gravity="center_horizontal|bottom" />
+        </FrameLayout>
+    </FrameLayout>
 </RelativeLayout>
