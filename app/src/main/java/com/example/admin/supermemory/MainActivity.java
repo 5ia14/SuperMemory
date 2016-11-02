@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSinglePlayer(View view) {
-        setContentView(R.layout.play);
+        setContentView(R.layout.single_player);
     }
 
     public void showMultiPlayer(View view) {
