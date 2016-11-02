@@ -23,21 +23,21 @@
             <Button
                 android:layout_width="200dp"
                 android:layout_height="60dp"
-                android:text="Single Player"
+                android:text="@string/bHomeSingleP"
                 android:id="@+id/singlePlayer"
                 android:layout_gravity="center_horizontal|top" />
 
             <Button
                 android:layout_width="200dp"
                 android:layout_height="60dp"
-                android:text="Multi Player"
+                android:text="@string/bHomeMultiP"
                 android:id="@+id/multiPlayer"
                 android:layout_gravity="center" />
 
             <Button
                 android:layout_width="200dp"
                 android:layout_height="60dp"
-                android:text="Credits"
+                android:text="@string/bHomeCredits"
                 android:id="@+id/credits"
                 android:layout_gravity="center_horizontal|bottom" />
         </FrameLayout>
