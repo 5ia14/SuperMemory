@@ -18,12 +18,20 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Credits");
         alertDialog.setMessage("Ruben Allenspach\nSadri Rammal");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 });
         alertDialog.show();
+    }
+
+    public void showSinglePlayer(View view) {
+        setContentView(R.layout.play);
+    }
+
+    public void showMain(View view) {
+        setContentView(R.layout.multiplay);
     }
 }
