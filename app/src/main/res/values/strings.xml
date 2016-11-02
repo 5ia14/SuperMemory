@@ -9,9 +9,9 @@
     <!-- Buttons -->
     <string name="restartBtnT">Restart</string>
     <string name="mainBtnT">Main Menu</string>
-    <string name="creditBtnT">Credits</string>
-    <string name="multiPlayBtnT">Multi Player</string>
     <string name="playBtnT">Single Player</string>
+    <string name="multiPlayBtnT">Multi Player</string>
+    <string name="creditBtnT">Credits</string>
     <!-- Buttons End -->
 
 
