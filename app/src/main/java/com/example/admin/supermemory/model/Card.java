@@ -3,7 +3,7 @@ package com.example.admin.supermemory.model;
 import android.media.Image;
 
 /**
- * Created by admin on 02.11.2016.
+ * Created by Sadri on 02.11.2016.
  */
 public class Card {
 

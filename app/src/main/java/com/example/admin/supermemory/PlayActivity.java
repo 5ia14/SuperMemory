@@ -13,7 +13,6 @@ public class PlayActivity extends AppCompatActivity {
 
     private int score;
     private Date time;
-    private
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
