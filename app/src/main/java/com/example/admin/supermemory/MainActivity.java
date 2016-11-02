@@ -31,7 +31,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.play);
     }
 
+    public void showMultiPlayer(View view) {
+        setContentView(R.layout.multi_player);
+    }
+
     public void showMain(View view) {
-        setContentView(R.layout.multiplay);
+        setContentView(R.layout.activity_main);
     }
 }
