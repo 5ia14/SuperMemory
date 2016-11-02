@@ -9,10 +9,11 @@ public class MemoryField {
 
     public MemoryField(){
         cards = new Card[6][5];
+        setCards();
     }
 
     public void setCards(){
+
         //setzt 15 random bilder auf 30 karten und setzt noch zu jeder card eine value
     }
-
 }
