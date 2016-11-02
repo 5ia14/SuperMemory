@@ -6,12 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Created by Sadri on 02.11.2016.
  */
-public class PlayActivity extends AppCompatActivity {
+public class MultiPlayActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.play);
+        setContentView(R.layout.multiplay);
     }
 
 }
