@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">SuperMemory</string>
+
+    <!-- Labels -->
+    <string name="timeLabelT">Time: </string>
+    <string name="scoreLabelT">Score: </string>
+    <!-- Labels End -->
+
+    <!-- Buttons -->
+    <string name="restartBtnT">Restart</string>
+    <string name="mainBtnT">Main Menu</string>
+    <!-- Buttons End -->
+
 </resources>

@@ -3,20 +3,73 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <GridLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:rowCount="12"
-        android:columnCount="8">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rowCount="12"
+            android:columnCount="8">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/timeLabelT"
+                android:id="@+id/timeText"
+                android:layout_row="0"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/scoreLabelT"
+                android:id="@+id/scoreText"
+                android:layout_row="1"
+                android:layout_column="0" />
+        </GridLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rowCount="8"
+            android:columnCount="8"
+            android:id="@+id/memoryField">
+
+
+        </GridLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Time: "
-            android:id="@+id/timeLabel"
-            android:layout_row="1"
-            android:layout_column="1" />
-    </GridLayout>
+            android:text="@string/restartBtnT"
+            android:id="@+id/restart" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mainBtnT"
+            android:id="@+id/main" />
+
+    </LinearLayout>
 </LinearLayout>
