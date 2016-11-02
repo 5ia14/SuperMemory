@@ -10,9 +10,12 @@ public class Card {
     private int value;
     private Image image;
 
+    private boolean isFlipped;
+
     public Card(int value, Image image){
         this.value = value;
         this.image = image;
+        this.isFlipped = false;
     }
 
     public int getValue() {
@@ -29,4 +32,13 @@ public class Card {
         }
         return false;
     }
+
+    public void flipCard(boolean flip){
+        this.isFlipped = flip;
+    }
+
+    public boolean isFlipped() {
+        return isFlipped;
+    }
+
 }
