@@ -12,6 +12,7 @@
     <string name="playBtnT">Single Player</string>
     <string name="multiPlayBtnT">Multi Player</string>
     <string name="creditBtnT">Credits</string>
+    <string name="lol">Hello</string>
     <!-- Buttons End -->
 
 </resources>

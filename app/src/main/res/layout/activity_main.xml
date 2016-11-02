@@ -39,6 +39,7 @@
                 android:layout_height="60dp"
                 android:text="@string/creditBtnT"
                 android:id="@+id/credits"
+                android:onClick="showCredits"
                 android:layout_gravity="center_horizontal|bottom" />
         </FrameLayout>
     </FrameLayout>
