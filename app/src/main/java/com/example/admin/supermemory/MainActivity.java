@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,5 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void showMain(View view) {
         setContentView(R.layout.activity_main);
+    }
+
+    public void handleCardClick(View view) {
+        Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.hyperspace_jump);
+        view.startAnimation(hyperspaceJumpAnimation);
     }
 }

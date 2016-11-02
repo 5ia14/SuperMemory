@@ -10,7 +10,7 @@ android:layout_height="match_parent">
     <Button
         android:layout_width="117dp"
         android:layout_height="60dp"
-        android:text="Main Menu"
+        android:text="@string/mainBtnT"
         android:id="@+id/mainMenu"
         android:onClick="showMain"
         android:layout_gravity="left|bottom"
@@ -19,9 +19,9 @@ android:layout_height="match_parent">
     <Button
         android:layout_width="102dp"
         android:layout_height="60dp"
-        android:text="Restart"
+        android:text="@string/restart"
         android:id="@+id/restartGame"
-        android:onClick="showMultiPlayer"
+        android:onClick="showSinglePlayer"
         android:layout_gravity="right|bottom"
         android:layout_margin="10dp" />
 
