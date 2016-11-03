@@ -29,6 +29,10 @@ public class PlayActivity extends AppCompatActivity {
         setUp();
     }
 
+    public PlayActivity(){
+        System.out.println("Baum");
+    }
+
     public void setUp(){
         score = 0;
         time = 0;
