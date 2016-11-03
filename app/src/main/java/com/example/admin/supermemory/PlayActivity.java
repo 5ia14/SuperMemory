@@ -31,6 +31,7 @@ public class PlayActivity extends AppCompatActivity {
 
     public void setUp(){
         score = 0;
+        time = 0;
         startTimer();
         memoryField = new MemoryField();
     }
@@ -41,7 +42,7 @@ public class PlayActivity extends AppCompatActivity {
         t.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                tv.setText(R.string.timeLabelT + time);
+                tv.setText(R.string.timeLabelT + " " + time);
                 time++;
 
             }
