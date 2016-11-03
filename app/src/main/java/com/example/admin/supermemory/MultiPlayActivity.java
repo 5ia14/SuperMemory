@@ -133,6 +133,9 @@ public class MultiPlayActivity extends AppCompatActivity {
     public void handleCardClick(View view) {
         // shuffleCards();
         view.animate().rotationX(180).rotationY(180);
+        ImageButton ib = (ImageButton) view;
+        String id = "" + ib.getId();
+        ib.setBackground( getResources().getDrawable(R.drawable.bild0);
     }
 
 }
