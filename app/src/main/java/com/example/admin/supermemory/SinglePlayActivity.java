@@ -27,7 +27,7 @@ public class SinglePlayActivity extends AppCompatActivity {
         score = 0;
         time = 0;
         startTimer();
-        //memoryField = new MemoryField();
+        memoryField = new MemoryField();
     }
 
     public void startTimer(){
