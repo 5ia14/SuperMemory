@@ -15,7 +15,6 @@ public class SinglePlayActivity extends AppCompatActivity {
     private int score;
     private int time;
     private MemoryField memoryField;
-    private TextView timeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,6 @@ public class SinglePlayActivity extends AppCompatActivity {
     public void setUp(){
         score = 0;
         time = 0;
-        timeView = (TextView) findViewById(R.id.timeOut);
         startTimer();
         //memoryField = new MemoryField();
     }
@@ -43,6 +41,7 @@ public class SinglePlayActivity extends AppCompatActivity {
     }
 
     public void timeTick(){
+        TextView timeView = (TextView) findViewById(R.id.timeOut);
         System.out.println(time);
         timeView.setText(R.string.timeLabelT + time);
         time++;
