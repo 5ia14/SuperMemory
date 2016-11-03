@@ -28,7 +28,7 @@ public class SinglePlayActivity extends AppCompatActivity {
         score = 0;
         time = 0;
         startTimer();
-        memoryField = new MemoryField();
+        //memoryField = new MemoryField();
     }
 
     public void startTimer(){
@@ -43,6 +43,10 @@ public class SinglePlayActivity extends AppCompatActivity {
     }
 
     public void timeTick(){
+        if(time == null){
+            time = 0;
+        }
+        System.out.println(time);
         timeView.setText(R.string.timeLabelT + time);
         time++;
     }
