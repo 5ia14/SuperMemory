@@ -140,7 +140,7 @@ public class MultiPlayActivity extends AppCompatActivity {
         view.animate().rotationX(180).rotationY(180);
         ImageButton ib = (ImageButton) view;
         String id = "" + ib.getId();
-        ib.setBackground( getResources().getDrawable(R.drawable.bild0);
+        ib.setBackground(getDrawable(R.drawable.bild0));
     }
 
 }
