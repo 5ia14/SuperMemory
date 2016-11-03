@@ -2,6 +2,8 @@ package com.example.admin.supermemory;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v4.view.ViewGroupCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,9 +24,18 @@ import com.example.admin.supermemory.model.*;
  */
 public class SinglePlayActivity extends AppCompatActivity {
 
-    private int score;
-    private int time;
+
+    private long startTime  = 0L;
+    private TextView timerValue;
+    private Handler customHandler = new Handler();
+
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
+
+
     private MemoryField memoryField;
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,33 +45,30 @@ public class SinglePlayActivity extends AppCompatActivity {
 
     public void setUp(){
         score = 0;
-        time = 0;
-       //  startTimer();
+        startTimer();
         memoryField = new MemoryField();
     }
 
 
-   /* public void startTimer(){
-        Timer t = new Timer();
-        t.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        timeTick();
-                    }
-                });
-            }
-        }, 1000, 1000);
+    public void startTimer(){
+        timerValue = (TextView) findViewById(R.id.timeOut);
+        timeSwapBuff += timeInMilliseconds;
+        customHandler.removeCallbacks(updateTimerThread);
     }
 
-    public void timeTick(){
-        TextView timeView = (TextView) findViewById(R.id.timeOut);
-        System.out.println(time);
-        timeView.setText(R.string.timeLabelT + time);
-        time++;
-    }*/
+    private Runnable updateTimerThread = new Runnable() {
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+            int secs = (int) (updatedTime / 1000);
+            int mins = secs / 60;
+            secs = secs % 60;
+            int milliseconds = (int) (updatedTime % 1000);
+            timerValue.setText("" + mins + ":"
+                    + String.format("%02d", secs) + ":"
+                    + String.format("%03d", milliseconds));
+            customHandler.postDelayed(this, 0);
+        }
+    };
+
 }
