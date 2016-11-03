@@ -26,11 +26,11 @@ public class SinglePlayActivity extends AppCompatActivity {
     public void setUp(){
         score = 0;
         time = 0;
-        startTimer();
+        //startTimer();
         memoryField = new MemoryField();
     }
 
-    public void startTimer(){
+   /* public void startTimer(){
         Timer t = new Timer();
         t.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -45,5 +45,5 @@ public class SinglePlayActivity extends AppCompatActivity {
         System.out.println(time);
         timeView.setText(R.string.timeLabelT + time);
         time++;
-    }
+    }*/
 }
