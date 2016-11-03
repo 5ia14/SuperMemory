@@ -28,7 +28,7 @@ public class SingelPlayActivity extends AppCompatActivity{
     @Override
     public void onStart() {
         super.onStart();
-        setUp();
+        // setUp();
     }
 
     public void setUp(){
