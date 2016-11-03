@@ -25,6 +25,12 @@ public class PlayActivity extends Activity {
         setUp();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        setUp();
+    }
+
     public PlayActivity(){
         System.out.println("Baum");
     }
