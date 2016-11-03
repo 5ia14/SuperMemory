@@ -2,6 +2,7 @@ package com.example.admin.supermemory;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 ImageButton btn = new ImageButton(this);
-
+                btn.la = new GridView.LayoutParams (80, 40);
                 assert linearLayout != null;
                 linearLayout.addView(btn, i, j);
             }
