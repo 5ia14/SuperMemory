@@ -1,5 +1,6 @@
 package com.example.admin.supermemory;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,7 @@ import java.util.TimerTask;
 /**
  * Created by Sadri on 02.11.2016.
  */
-public class PlayActivity extends AppCompatActivity {
+public class PlayActivity extends Activity {
 
     private int score;
     private int time;
