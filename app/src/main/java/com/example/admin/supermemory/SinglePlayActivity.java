@@ -2,10 +2,16 @@ package com.example.admin.supermemory;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.view.ViewGroupCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import com.example.admin.supermemory.model.*;
@@ -31,11 +37,12 @@ public class SinglePlayActivity extends AppCompatActivity {
         memoryField = new MemoryField();
     }
 
-    public void onImage(ImageButton ib){
-        String id = "" + ib.getId();
+    public void handleCardClick(View v){
+        String id = "" + v.getId();
         int x = Integer.parseInt(id.substring(1, 2));
         int y =Integer.parseInt(id.substring(0, 1));
-        ib.setImageDrawable(memoryField.getCard(x,y).getImage().getDrawable());
+        ImageView iv = (ImageView) v;
+        iv.setImageDrawable(memoryField.getCard(x,y).getImage().getDrawable());
     }
 
    /* public void startTimer(){
