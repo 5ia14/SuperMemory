@@ -6,11 +6,13 @@ import android.support.v4.view.ViewGroupCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -37,13 +39,6 @@ public class SinglePlayActivity extends AppCompatActivity {
         memoryField = new MemoryField();
     }
 
-    public void handleCardClick(View v){
-        String id = "" + v.getId();
-        int x = Integer.parseInt(id.substring(1, 2));
-        int y =Integer.parseInt(id.substring(0, 1));
-        ImageView iv = (ImageView) v;
-        iv.setImageDrawable(memoryField.getCard(x,y).getImage().getDrawable());
-    }
 
    /* public void startTimer(){
         Timer t = new Timer();
