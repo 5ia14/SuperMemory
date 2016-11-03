@@ -1,6 +1,7 @@
 package com.example.admin.supermemory.model;
 
 import android.media.Image;
+import android.widget.ImageView;
 
 import com.example.admin.supermemory.R;
 
@@ -16,12 +17,16 @@ public class MemoryField {
         setCards();
     }
 
+    public Card getCard(int x, int y){
+        return cards[x][y];
+    }
+
     public void setCards(){
-        int[] images = new int[4];
-        images[0] = R.drawable.bild0;
-        images[1] = R.drawable.bild1;
-        images[2] = R.drawable.bild2;
-        images[3] = R.drawable.bild3;
+        ImageView[] images = new ImageView[4];
+        images[0].setImageResource(R.drawable.bild0);
+        images[1].setImageResource(R.drawable.bild1);
+        images[2].setImageResource(R.drawable.bild2);
+        images[3].setImageResource(R.drawable.bild3);
 
         int counter = 0;
         for(int a = 0; a < 2; a++){
