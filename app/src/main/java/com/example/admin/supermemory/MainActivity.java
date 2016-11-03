@@ -17,6 +17,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void showSinglePlayer(View view) {
+        Intent intent = new Intent(this, SinglePlayActivity.class);
+        startActivity(intent);
+    }
+
+    public void showMultiPlayer(View view) {
+        Intent intent = new Intent(this, MultiPlayActivity.class);
+        startActivity(intent);
+    }
+
     public void showCredits(View view) {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Credits");
@@ -29,15 +39,4 @@ public class MainActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
-
-    public void showSinglePlayer(View view) {
-        Intent intent = new Intent(this, PlayActivity.class);
-        startActivity(intent);
-    }
-
-    public void showMultiPlayer(View view) {
-        Intent intent = new Intent(this, MultiPlayActivity.class);
-        startActivity(intent);
-    }
-
 }

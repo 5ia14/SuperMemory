@@ -25,7 +25,6 @@
                 android:layout_height="60dp"
                 android:text="@string/playBtnT"
                 android:id="@+id/singlePlayer"
-                android:onClick="showSinglePlayer"
                 android:layout_gravity="center_horizontal|top" />
 
             <Button
@@ -33,7 +32,6 @@
                 android:layout_height="60dp"
                 android:text="@string/multiPlayBtnT"
                 android:id="@+id/multiPlayer"
-                android:onClick="showMultiPlayer"
                 android:layout_gravity="center" />
 
             <Button
