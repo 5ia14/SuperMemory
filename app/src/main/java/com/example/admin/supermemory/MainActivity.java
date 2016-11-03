@@ -42,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleCardClick(View view) {
-        Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.hyperspace_jump);
-        view.startAnimation(hyperspaceJumpAnimation);
+        view.animate().rotationX(180).rotationY(180);
+
+        view.animate().rotationX(180).rotationY(180);
+
+        view.clearAnimation();
     }
 }
