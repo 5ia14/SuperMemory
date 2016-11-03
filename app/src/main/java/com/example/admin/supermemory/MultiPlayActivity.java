@@ -99,8 +99,8 @@ public class MultiPlayActivity extends AppCompatActivity {
     private void shuffleCards() {
         List<Pair<Integer, Integer>> cords = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 6; j++) {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 5; j++) {
                 cords.add(new Pair<>(i, j));
             }
         }
@@ -113,11 +113,8 @@ public class MultiPlayActivity extends AppCompatActivity {
 
         int counter = 0;
         for (ImageButton b : ib) {
-            Random rnd = new Random();
-            int r = rnd.nextInt(200);
 
-            b.animate().rotationY(r);
-            linearLayout.addView(b/*, new GridLayout.LayoutParams(titleRowSpec , titleTxtSpecColumn*/);
+            linearLayout.addView(b, new GridLayout.LayoutParams(GridLayout.spec(cords.get(counter).first), GridLayout.spec(cords.get(counter).second)));
 
             counter++;
         }
