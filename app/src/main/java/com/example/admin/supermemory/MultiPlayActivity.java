@@ -11,7 +11,7 @@ public class MultiPlayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.multiplay);
+        setContentView(R.layout.multi_player);
     }
 
 }

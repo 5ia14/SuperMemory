@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         alertDialog.show();
+
+        ViewGroup linearLayout = (ViewGroup) findViewById(R.id.memoryField);
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                ImageButton btn = new ImageButton(this);
+
+                assert linearLayout != null;
+                linearLayout.addView(btn, i, j);
+            }
+        }
     }
 
     public void showSinglePlayer(View view) {
@@ -43,9 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void handleCardClick(View view) {
         view.animate().rotationX(180).rotationY(180);
-
-        view.animate().rotationX(180).rotationY(180);
-
         view.clearAnimation();
     }
 }
