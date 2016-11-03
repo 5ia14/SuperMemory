@@ -2,15 +2,10 @@ package com.example.admin.supermemory;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.example.admin.supermemory.model.MemoryField;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
