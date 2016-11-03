@@ -132,7 +132,7 @@ public class MultiPlayActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MultiPlayActivity.class);
         startActivity(intent);
     }
-
+//
     public void handleCardClick(View view) {
         // shuffleCards();
         view.animate().rotationX(180).rotationY(180);
