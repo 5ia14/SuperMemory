@@ -22,7 +22,7 @@ public class MemoryField {
     }
 
     public void setCards(){
-        ImageView[] images = new ImageView[4];
+        /*ImageView[] images = new ImageView[4];
         images[0].setImageResource(R.drawable.bild0);
         images[1].setImageResource(R.drawable.bild1);
         images[2].setImageResource(R.drawable.bild2);
@@ -37,6 +37,6 @@ public class MemoryField {
                 cards[a][b] = new Card(counter, images[counter]);
                 counter++;
             }
-        }
+        }*/
     }
 }

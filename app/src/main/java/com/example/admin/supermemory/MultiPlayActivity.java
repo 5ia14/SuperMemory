@@ -2,21 +2,27 @@ package com.example.admin.supermemory;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -91,18 +97,29 @@ public class MultiPlayActivity extends AppCompatActivity {
     }
 
     private void shuffleCards() {
-        Collections.shuffle(ib);
+        List<Pair<Integer, Integer>> cords = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 6; j++) {
+                cords.add(new Pair<>(i, j));
+            }
+        }
+
+        Collections.shuffle(cords);
 
         ViewGroup linearLayout = (ViewGroup) findViewById(R.id.memoryField);
         assert linearLayout != null;
         linearLayout.removeAllViews();
 
+        int counter = 0;
         for (ImageButton b : ib) {
             Random rnd = new Random();
             int r = rnd.nextInt(200);
 
             b.animate().rotationY(r);
-            linearLayout.addView(b);
+            linearLayout.addView(b/*, new GridLayout.LayoutParams(titleRowSpec , titleTxtSpecColumn*/);
+
+            counter++;
         }
     }
 
