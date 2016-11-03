@@ -99,8 +99,8 @@ public class MultiPlayActivity extends AppCompatActivity {
     private void shuffleCards() {
         List<Pair<Integer, Integer>> cords = new ArrayList<>();
 
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 6; j++) {
                 cords.add(new Pair<>(i, j));
             }
         }
@@ -113,8 +113,12 @@ public class MultiPlayActivity extends AppCompatActivity {
 
         int counter = 0;
         for (ImageButton b : ib) {
+            GridLayout.LayoutParams param = new GridLayout.LayoutParams();
+            param.setMargins(20, 20, 20, 20);
+            param.columnSpec = GridLayout.spec(cords.get(counter).first);
+            param.rowSpec = GridLayout.spec(cords.get(counter).second);
 
-            linearLayout.addView(b, new GridLayout.LayoutParams(GridLayout.spec(cords.get(counter).first), GridLayout.spec(cords.get(counter).second)));
+            linearLayout.addView(b, param);
 
             counter++;
         }
@@ -129,7 +133,8 @@ public class MultiPlayActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MultiPlayActivity.class);
         startActivity(intent);
     }
-//
+
+    //
     public void handleCardClick(View view) {
         // shuffleCards();
         view.animate().rotationX(180).rotationY(180);
