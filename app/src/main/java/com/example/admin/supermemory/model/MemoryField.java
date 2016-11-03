@@ -1,5 +1,7 @@
 package com.example.admin.supermemory.model;
 
+import android.media.Image;
+
 import com.example.admin.supermemory.R;
 
 /**
@@ -10,26 +12,26 @@ public class MemoryField {
     private Card[][] cards;
 
     public MemoryField(){
-        cards = new Card[5][6];
+        cards = new Card[2][4]; //4 BILDER DESHALB 8 KARTEN
         setCards();
     }
 
     public void setCards(){
-        Card[] cardsL = new Card[15];
-        for(int i = 0; i < 14; i++){
-             // cardsL = new Card(i, R.drawable.bild0);
-        }
+        int[] images = new int[4];
+        images[0] = R.drawable.bild0;
+        images[1] = R.drawable.bild1;
+        images[2] = R.drawable.bild2;
+        images[3] = R.drawable.bild3;
 
-        int counter = 1;
-        for(int a = 0; a < 5; a++){
-            for(int b = 0; b < 6; b++){
-                if(counter > 15){
+        int counter = 0;
+        for(int a = 0; a < 2; a++){
+            for(int b = 0; b < 4; b++){
+                if(counter >= 4){
                     counter = 0;
                 }
-                cards[a][b] = cardsL[counter];
+                cards[a][b] = new Card(counter, images[counter]);
                 counter++;
             }
         }
-        //setzt 15 random bilder auf 30 karten und setzt noch zu jeder card eine value
     }
 }

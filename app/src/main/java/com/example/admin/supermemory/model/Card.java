@@ -1,18 +1,16 @@
 package com.example.admin.supermemory.model;
 
-import android.media.Image;
-
 /**
  * Created by Sadri on 02.11.2016.
  */
 public class Card {
 
     private int value;
-    private Image image;
+    private int image;
 
     private boolean isFlipped;
 
-    public Card(int value, Image image){
+    public Card(int value, int image){
         this.value = value;
         this.image = image;
         this.isFlipped = false;
@@ -22,7 +20,7 @@ public class Card {
         return value;
     }
 
-    public Image getImage() {
+    public int getImage() {
         return image;
     }
 
