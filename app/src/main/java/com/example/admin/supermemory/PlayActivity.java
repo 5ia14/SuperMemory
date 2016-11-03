@@ -1,13 +1,17 @@
 package com.example.admin.supermemory;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.GridLayout;
+import android.widget.TextView;
 
 import com.example.admin.supermemory.model.MemoryField;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Sadri on 02.11.2016.
@@ -15,7 +19,7 @@ import java.util.Date;
 public class PlayActivity extends AppCompatActivity {
 
     private int score;
-    private Date time;
+    private int time;
     private MemoryField memoryField;
 
     @Override
@@ -27,13 +31,27 @@ public class PlayActivity extends AppCompatActivity {
 
     public void setUp(){
         score = 0;
-        time = Calendar.getInstance().getTime();
+        startTimer();
         memoryField = new MemoryField();
-        createBtn();
     }
 
-    public void createBtn(){
+    public void startTimer(){
+        final TextView tv = (TextView) findViewById(R.id.timeOut);
+        Timer t = new Timer();
+        t.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                tv.setText(R.string.timeLabelT + time);
+                time++;
+
+            }
+        }, 1000, 1000);
 
     }
+
+    public void connectMemoryFiled(){
+
+    }
+
 
 }
