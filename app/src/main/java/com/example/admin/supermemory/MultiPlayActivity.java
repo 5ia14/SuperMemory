@@ -32,6 +32,11 @@ public class MultiPlayActivity extends AppCompatActivity {
     private float mAccelerationCurrent; // current acceleration including gravity
     private float mAccelerationLast; // last acceleration including gravity
 
+    private List<ImageButton> ib = new ArrayList<>();
+
+    public final int HALF_TURN = 180;
+    public final int QUARTER_TURN = 90;
+
     private final SensorEventListener mSensorListener = new SensorEventListener() {
         public void onSensorChanged(SensorEvent se) {
             float x = se.values[0];
@@ -56,8 +61,6 @@ public class MultiPlayActivity extends AppCompatActivity {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
     };
-
-    private List<ImageButton> ib = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,11 +136,13 @@ public class MultiPlayActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void handleCardClick(View view) {
-        // shuffleCards();
-        view.animate().rotationX(180).rotationY(180);
+        view.animate().rotationX(QUARTER_TURN).rotationY(QUARTER_TURN);
+
         ImageButton ib = (ImageButton) view;
         String id = "" + ib.getId();
         ib.setBackground(getDrawable(R.drawable.bild0));
+
+        view.animate().rotationX(QUARTER_TURN).rotationY(QUARTER_TURN);
     }
 
 }
