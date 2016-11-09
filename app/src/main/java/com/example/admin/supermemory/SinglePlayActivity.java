@@ -85,7 +85,6 @@ public class SinglePlayActivity extends AppCompatActivity {
             customHandler.postDelayed(this, 0);
         }
     };*/
-    private int cardCount;
     private int score;
 
     private ImageButton cardOne;
@@ -144,8 +143,7 @@ public class SinglePlayActivity extends AppCompatActivity {
             View nextChild = linearLayout.getChildAt(index);
             ib.add((ImageButton) nextChild);
         }
-
-        cardCount = 0;
+        score = 0;
     }
 
     @Override
@@ -217,7 +215,7 @@ public class SinglePlayActivity extends AppCompatActivity {
                 //same
                 removeCard(cardOne);
                 removeCard(cardTwo);
-                score++;
+                scoreUp();
             }else{
                 //not same
                /* try {
@@ -255,5 +253,11 @@ public class SinglePlayActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    public void scoreUp(){
+        score++;
+        TextView scoreOut = (TextView) findViewById(R.id.scoreOut);
+        scoreOut.setText(R.string.scoreLabelT + score);
     }
 }
