@@ -11,6 +11,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
@@ -179,8 +180,14 @@ public class MultiPlayActivity extends AppCompatActivity {
                 removeCard(cardTwo);
                 scoreUp();
             }else{
-                cardOne.setBackground(getResources().getDrawable(R.drawable.def));
-                cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardOne.setBackground(getResources().getDrawable(R.drawable.def));
+                        cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
+                    }
+                }, 2000);
             }
             cardOne = null;
             cardTwo = null;
@@ -199,7 +206,9 @@ public class MultiPlayActivity extends AppCompatActivity {
 
     public boolean sameCard(ImageButton card1, ImageButton card2){
         if(card1.getTag() == card2.getTag()){
-            return true;
+            if(card1.getId() != card2.getId()){
+                return true;
+            }
         }
         return false;
     }
