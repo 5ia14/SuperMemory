@@ -1,6 +1,7 @@
 package com.example.admin.supermemory;
 
 import android.annotation.TargetApi;
+import android.app.backup.FullBackupDataOutput;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -38,6 +39,9 @@ public class MultiPlayActivity extends AppCompatActivity {
 
     public final int HALF_TURN = 180;
     public final int QUARTER_TURN = 90;
+    public final int FULL_TURN = 360;
+
+    private boolean shuffled = false;
 
     private final SensorEventListener mSensorListener = new SensorEventListener() {
         public void onSensorChanged(SensorEvent se) {
@@ -116,14 +120,22 @@ public class MultiPlayActivity extends AppCompatActivity {
         int counter = 0;
         for (ImageButton b : ib) {
             GridLayout.LayoutParams param = new GridLayout.LayoutParams();
+
             param.setMargins(20, 20, 20, 20);
             param.columnSpec = GridLayout.spec(cords.get(counter).first);
             param.rowSpec = GridLayout.spec(cords.get(counter).second);
+
+            String uri = "@drawable/def";
+            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+            Drawable res = getResources().getDrawable(imageResource);
+            b.setBackground(res);
 
             linearLayout.addView(b, param);
 
             counter++;
         }
+
+        this.shuffled = true;
     }
 
     public void showMain(View view) {
@@ -139,13 +151,13 @@ public class MultiPlayActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void handleCardClick(View view) {
         String uri = "@drawable/" + view.getTag();
-
         int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-
         Drawable res = getResources().getDrawable(imageResource);
 
-        view.animate().rotationX(HALF_TURN).rotationY(HALF_TURN);
+        view.animate().rotationX(FULL_TURN).rotationY(FULL_TURN);
         view.setBackground(res);
+
+        view.clearAnimation();
     }
 
 }
