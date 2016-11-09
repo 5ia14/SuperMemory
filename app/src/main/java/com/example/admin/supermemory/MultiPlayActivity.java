@@ -1,7 +1,6 @@
 package com.example.admin.supermemory;
 
 import android.annotation.TargetApi;
-import android.app.backup.FullBackupDataOutput;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -19,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,19 +36,14 @@ public class MultiPlayActivity extends AppCompatActivity {
     private ImageButton cardOne;
     private ImageButton cardTwo;
 
-    /* put this into your activity class */
     private SensorManager mSensorManager;
-    private float mAcceleration; // acceleration apart from gravity
-    private float mAccelerationCurrent; // current acceleration including gravity
-    private float mAccelerationLast; // last acceleration including gravity
+    private float mAcceleration;
+    private float mAccelerationCurrent;
+    private float mAccelerationLast;
 
     private List<ImageButton> ib = new ArrayList<>();
 
-    public final int HALF_TURN = 180;
-    public final int QUARTER_TURN = 90;
     public final int FULL_TURN = 360;
-
-    private boolean shuffled = false;
 
     private final SensorEventListener mSensorListener = new SensorEventListener() {
         public void onSensorChanged(SensorEvent se) {
@@ -145,8 +138,6 @@ public class MultiPlayActivity extends AppCompatActivity {
 
             counter++;
         }
-
-        this.shuffled = true;
     }
 
     public void showMain(View view) {
@@ -167,21 +158,20 @@ public class MultiPlayActivity extends AppCompatActivity {
 
         Drawable res = getResources().getDrawable(imageResource);
 
-        view.animate().rotationX(HALF_TURN).rotationY(HALF_TURN);
+        view.animate().rotationX(FULL_TURN);
         view.setBackground(res);
 
-        if(cardOne == null){
+        if (cardOne == null) {
             cardOne = (ImageButton) view;
-        }else if(cardTwo == null && cardOne != null){
+        } else if (cardTwo == null) {
             cardTwo = (ImageButton) view;
-            if(sameCard(cardOne, cardTwo)){
-                //same
+            if (sameCard(cardOne, cardTwo)) {
                 removeCard(cardOne);
                 removeCard(cardTwo);
                 scoreUp();
                 cardOne = null;
                 cardTwo = null;
-            }else{
+            } else {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -196,28 +186,29 @@ public class MultiPlayActivity extends AppCompatActivity {
         }
     }
 
-    public void removeCard(ImageButton card){
+    public void removeCard(ImageButton card) {
         ViewGroup linearLayout = (ViewGroup) findViewById(R.id.memoryField);
-        for(int i=0; i< linearLayout.getChildCount(); i++) {
-            ImageButton child = (ImageButton)linearLayout.getChildAt(i);
-            if(child.equals(card)){
+        for (int i = 0; i < linearLayout.getChildCount(); i++) {
+            ImageButton child = (ImageButton) linearLayout.getChildAt(i);
+            if (child.equals(card)) {
                 linearLayout.removeViewAt(i);
             }
         }
     }
 
-    public boolean sameCard(ImageButton card1, ImageButton card2){
-        if(card1.getTag() == card2.getTag()){
-            if(card1.getId() != card2.getId()){
+    public boolean sameCard(ImageButton card1, ImageButton card2) {
+        if (card1.getTag() == card2.getTag()) {
+            if (card1.getId() != card2.getId()) {
                 return true;
             }
         }
         return false;
     }
 
-    public void scoreUp(){
+    public void scoreUp() {
         score++;
         scoreOut = (TextView) findViewById(R.id.scoreOut);
+        assert scoreOut != null;
         scoreOut.setText("Score: " + score);
     }
 }

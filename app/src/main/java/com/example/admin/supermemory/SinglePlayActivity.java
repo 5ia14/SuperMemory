@@ -8,31 +8,23 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.os.Vibrator;
 import android.support.v4.util.Pair;
-import android.support.v4.view.ViewGroupCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import com.example.admin.supermemory.model.*;
+
 /**
  * Created by Sadri on 03.11.2016.
  */
@@ -45,14 +37,13 @@ public class SinglePlayActivity extends AppCompatActivity {
     private ImageButton cardTwo;
 
     private SensorManager mSensorManager;
-    private float mAcceleration; // acceleration apart from gravity
-    private float mAccelerationCurrent; // current acceleration including gravity
-    private float mAccelerationLast; // last acceleration including gravity
+    private float mAcceleration;
+    private float mAccelerationCurrent;
+    private float mAccelerationLast;
 
     private List<ImageButton> ib = new ArrayList<>();
 
-    public final int HALF_TURN = 180;
-    public final int QUARTER_TURN = 90;
+    public final int FULL_TURN = 360;
 
     private final SensorEventListener mSensorListener = new SensorEventListener() {
         public void onSensorChanged(SensorEvent se) {
@@ -98,6 +89,10 @@ public class SinglePlayActivity extends AppCompatActivity {
             ib.add((ImageButton) nextChild);
         }
         score = 0;
+
+        linearLayout.removeAllViews();
+
+        shuffleCards();
     }
 
     @Override
@@ -130,9 +125,15 @@ public class SinglePlayActivity extends AppCompatActivity {
         int counter = 0;
         for (ImageButton b : ib) {
             GridLayout.LayoutParams param = new GridLayout.LayoutParams();
+
             param.setMargins(20, 20, 20, 20);
             param.columnSpec = GridLayout.spec(cords.get(counter).first);
             param.rowSpec = GridLayout.spec(cords.get(counter).second);
+
+            String uri = "@drawable/def";
+            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+            Drawable res = getResources().getDrawable(imageResource);
+            b.setBackground(res);
 
             linearLayout.addView(b, param);
 
@@ -158,21 +159,20 @@ public class SinglePlayActivity extends AppCompatActivity {
 
         Drawable res = getResources().getDrawable(imageResource);
 
-        view.animate().rotationX(HALF_TURN).rotationY(HALF_TURN);
+        view.animate().rotationX(FULL_TURN);
         view.setBackground(res);
 
-        if(cardOne == null){
+        if (cardOne == null) {
             cardOne = (ImageButton) view;
-        }else if(cardTwo == null && cardOne != null){
+        } else if (cardTwo == null) {
             cardTwo = (ImageButton) view;
-            if(sameCard(cardOne, cardTwo)){
-                //same
+            if (sameCard(cardOne, cardTwo)) {
                 removeCard(cardOne);
                 removeCard(cardTwo);
                 scoreUp();
                 cardOne = null;
                 cardTwo = null;
-            }else{
+            } else {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -187,28 +187,29 @@ public class SinglePlayActivity extends AppCompatActivity {
         }
     }
 
-    public void removeCard(ImageButton card){
+    public void removeCard(ImageButton card) {
         ViewGroup linearLayout = (ViewGroup) findViewById(R.id.memoryField);
-        for(int i=0; i< linearLayout.getChildCount(); i++) {
-            ImageButton child = (ImageButton)linearLayout.getChildAt(i);
-            if(child.equals(card)){
+        for (int i = 0; i < linearLayout.getChildCount(); i++) {
+            ImageButton child = (ImageButton) linearLayout.getChildAt(i);
+            if (child.equals(card)) {
                 linearLayout.removeViewAt(i);
             }
         }
     }
 
-    public boolean sameCard(ImageButton card1, ImageButton card2){
-        if(card1.getTag() == card2.getTag()){
-            if(card1.getId() != card2.getId()){
+    public boolean sameCard(ImageButton card1, ImageButton card2) {
+        if (card1.getTag() == card2.getTag()) {
+            if (card1.getId() != card2.getId()) {
                 return true;
             }
         }
         return false;
     }
 
-    public void scoreUp(){
+    public void scoreUp() {
         score++;
         scoreOut = (TextView) findViewById(R.id.scoreOut);
+        assert scoreOut != null;
         scoreOut.setText("Score: " + score);
     }
 }
