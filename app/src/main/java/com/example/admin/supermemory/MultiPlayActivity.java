@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -29,6 +30,13 @@ import java.util.List;
  * Created by Sadri on 02.11.2016.
  */
 public class MultiPlayActivity extends AppCompatActivity {
+
+    private int score = 0;
+    private TextView scoreOut;
+
+    private ImageButton cardOne;
+    private ImageButton cardTwo;
+
     /* put this into your activity class */
     private SensorManager mSensorManager;
     private float mAcceleration; // acceleration apart from gravity
@@ -153,10 +161,65 @@ public class MultiPlayActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void handleCardClick(View view) {
         String uri = "@drawable/" + view.getTag();
+
         int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+
         Drawable res = getResources().getDrawable(imageResource);
 
+        view.animate().rotationX(HALF_TURN).rotationY(HALF_TURN);
         view.setBackground(res);
+
+        if(cardOne == null){
+            cardOne = (ImageButton) view;
+        }else if(cardTwo == null && cardOne != null){
+            cardTwo = (ImageButton) view;
+            if(sameCard(cardOne, cardTwo)){
+                //same
+                removeCard(cardOne);
+                removeCard(cardTwo);
+                scoreUp();
+            }else{
+                //not same
+               /* try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }*/
+                cardOne.setBackground(getResources().getDrawable(R.drawable.def));
+                cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
+            }
+            cardOne = null;
+            cardTwo = null;
+        }
     }
 
+    public void removeCard(ImageButton card){
+        ViewGroup linearLayout = (ViewGroup) findViewById(R.id.memoryField);
+        for(int i=0; i< linearLayout.getChildCount(); i++) {
+            ImageButton child = (ImageButton)linearLayout.getChildAt(i);
+            if(child.equals(card)){
+                linearLayout.removeViewAt(i);
+            }
+        }
+    }
+
+    public boolean sameCard(ImageButton card1, ImageButton card2){
+        if(card1.getTag() == card2.getTag()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean cardTurned(View view){
+        if(view.getBackground() != getResources().getDrawable(R.drawable.def)){
+            return true;
+        }
+        return false;
+    }
+
+    public void scoreUp(){
+        score++;
+        scoreOut = (TextView) findViewById(R.id.timeOut);
+        scoreOut.setText("Time: " + score);
+    }
 }
