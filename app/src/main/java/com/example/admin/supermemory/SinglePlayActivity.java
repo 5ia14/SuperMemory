@@ -85,7 +85,8 @@ public class SinglePlayActivity extends AppCompatActivity {
             customHandler.postDelayed(this, 0);
         }
     };*/
-    private int score;
+    private int score = 0;
+    private TextView scoreOut;
 
     private ImageButton cardOne;
     private ImageButton cardTwo;
@@ -257,7 +258,8 @@ public class SinglePlayActivity extends AppCompatActivity {
 
     public void scoreUp(){
         score++;
-        TextView scoreOut = (TextView) findViewById(R.id.scoreOut);
+        scoreOut = (TextView) findViewById(R.id.scoreOut);
+        assert scoreOut != null;
         scoreOut.setText(R.string.scoreLabelT + score);
     }
 }
