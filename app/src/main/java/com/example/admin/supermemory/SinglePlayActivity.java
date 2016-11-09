@@ -242,7 +242,7 @@ public class SinglePlayActivity extends AppCompatActivity {
     }
 
     public boolean sameCard(ImageButton card1, ImageButton card2){
-        if(card1.equals(card2)){
+        if(card1.getTag() == card2.getTag()){
             return true;
         }
         return false;
