@@ -170,18 +170,20 @@ public class SinglePlayActivity extends AppCompatActivity {
                 removeCard(cardOne);
                 removeCard(cardTwo);
                 scoreUp();
+                cardOne = null;
+                cardTwo = null;
             }else{
-                //not same
-               /* try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
-                cardOne.setBackground(getResources().getDrawable(R.drawable.def));
-                cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardOne.setBackground(getResources().getDrawable(R.drawable.def));
+                        cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
+                        cardOne = null;
+                        cardTwo = null;
+                    }
+                }, 1000);
             }
-            cardOne = null;
-            cardTwo = null;
         }
     }
 
@@ -197,14 +199,9 @@ public class SinglePlayActivity extends AppCompatActivity {
 
     public boolean sameCard(ImageButton card1, ImageButton card2){
         if(card1.getTag() == card2.getTag()){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean cardTurned(View view){
-        if(view.getBackground() != getResources().getDrawable(R.drawable.def)){
-            return true;
+            if(card1.getId() != card2.getId()){
+                return true;
+            }
         }
         return false;
     }
