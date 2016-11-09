@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showCredits(View view) {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setTitle("MANY THANKS FOR YOUR EFFORTS:");
+        alertDialog.setTitle("MANY THANKS FOR YOUR EFFORTS!!!");
         alertDialog.setMessage("Ruben Allenspach &\nSadri Rammal");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                 new DialogInterface.OnClickListener() {
