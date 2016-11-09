@@ -222,8 +222,8 @@ public class MultiPlayActivity extends AppCompatActivity {
         if (linearLayout.getChildCount() == 0) {
 
             AlertDialog alertDialog = new AlertDialog.Builder(MultiPlayActivity.this).create();
-            alertDialog.setTitle("Gewonnen!");
-            alertDialog.setMessage("Sie haben alle Karten richtig aufgedeckt!");
+            alertDialog.setTitle("YOU WON!");
+            alertDialog.setMessage("You won the game!");
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Back",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
