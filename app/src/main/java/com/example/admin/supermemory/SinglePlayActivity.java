@@ -212,6 +212,6 @@ public class SinglePlayActivity extends AppCompatActivity {
     public void scoreUp(){
         score++;
         scoreOut = (TextView) findViewById(R.id.scoreOut);
-        scoreOut.setText("Time: " + score);
+        scoreOut.setText("Score: " + score);
     }
 }

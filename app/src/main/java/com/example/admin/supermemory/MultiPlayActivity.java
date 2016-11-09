@@ -215,6 +215,6 @@ public class MultiPlayActivity extends AppCompatActivity {
         score++;
         scoreOut = (TextView) findViewById(R.id.scoreOut);
 
-        scoreOut.setText("Time: " + score);
+        scoreOut.setText("Score: " + score);
     }
 }
