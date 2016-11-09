@@ -98,6 +98,10 @@ public class SinglePlayActivity extends AppCompatActivity {
             ib.add((ImageButton) nextChild);
         }
         score = 0;
+
+        linearLayout.removeAllViews();
+
+        shuffleCards();
     }
 
     @Override
@@ -130,9 +134,15 @@ public class SinglePlayActivity extends AppCompatActivity {
         int counter = 0;
         for (ImageButton b : ib) {
             GridLayout.LayoutParams param = new GridLayout.LayoutParams();
+
             param.setMargins(20, 20, 20, 20);
             param.columnSpec = GridLayout.spec(cords.get(counter).first);
             param.rowSpec = GridLayout.spec(cords.get(counter).second);
+
+            String uri = "@drawable/def";
+            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+            Drawable res = getResources().getDrawable(imageResource);
+            b.setBackground(res);
 
             linearLayout.addView(b, param);
 
@@ -196,22 +206,13 @@ public class SinglePlayActivity extends AppCompatActivity {
     }
 
     public boolean sameCard(ImageButton card1, ImageButton card2){
-        if(card1.getTag() == card2.getTag()){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean cardTurned(View view){
-        if(view.getBackground() != getResources().getDrawable(R.drawable.def)){
-            return true;
-        }
-        return false;
+        return card1.getTag() == card2.getTag();
     }
 
     public void scoreUp(){
         score++;
         scoreOut = (TextView) findViewById(R.id.scoreOut);
+        assert scoreOut != null;
         scoreOut.setText("Time: " + score);
     }
 }

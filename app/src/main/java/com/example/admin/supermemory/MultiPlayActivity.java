@@ -204,22 +204,13 @@ public class MultiPlayActivity extends AppCompatActivity {
     }
 
     public boolean sameCard(ImageButton card1, ImageButton card2){
-        if(card1.getTag() == card2.getTag()){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean cardTurned(View view){
-        if(view.getBackground() != getResources().getDrawable(R.drawable.def)){
-            return true;
-        }
-        return false;
+        return card1.getTag() == card2.getTag();
     }
 
     public void scoreUp(){
         score++;
         scoreOut = (TextView) findViewById(R.id.timeOut);
+        assert scoreOut != null;
         scoreOut.setText("Time: " + score);
     }
 }
