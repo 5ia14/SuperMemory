@@ -11,6 +11,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
@@ -161,26 +162,37 @@ public class MultiPlayActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void handleCardClick(View view) {
         String uri = "@drawable/" + view.getTag();
+
         int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+
         Drawable res = getResources().getDrawable(imageResource);
 
-        view.animate().rotationX(FULL_TURN).rotationY(FULL_TURN);
+        view.animate().rotationX(HALF_TURN).rotationY(HALF_TURN);
         view.setBackground(res);
 
         if(cardOne == null){
             cardOne = (ImageButton) view;
-        }else if(cardTwo == null){
+        }else if(cardTwo == null && cardOne != null){
             cardTwo = (ImageButton) view;
             if(sameCard(cardOne, cardTwo)){
+                //same
                 removeCard(cardOne);
                 removeCard(cardTwo);
                 scoreUp();
+                cardOne = null;
+                cardTwo = null;
             }else{
-                cardOne.setBackground(getResources().getDrawable(R.drawable.def));
-                cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        cardOne.setBackground(getResources().getDrawable(R.drawable.def));
+                        cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
+                        cardOne = null;
+                        cardTwo = null;
+                    }
+                }, 1000);
             }
-            cardOne = null;
-            cardTwo = null;
         }
     }
 
@@ -195,13 +207,17 @@ public class MultiPlayActivity extends AppCompatActivity {
     }
 
     public boolean sameCard(ImageButton card1, ImageButton card2){
-        return card1.getTag() == card2.getTag();
+        if(card1.getTag() == card2.getTag()){
+            if(card1.getId() != card2.getId()){
+                return true;
+            }
+        }
+        return false;
     }
-//
+
     public void scoreUp(){
         score++;
-        scoreOut = (TextView) findViewById(R.id.timeOut);
-        assert scoreOut != null;
-        scoreOut.setText("Time: " + score);
+        scoreOut = (TextView) findViewById(R.id.scoreOut);
+        scoreOut.setText("Score: " + score);
     }
 }
