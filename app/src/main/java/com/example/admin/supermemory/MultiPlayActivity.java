@@ -179,12 +179,6 @@ public class MultiPlayActivity extends AppCompatActivity {
                 removeCard(cardTwo);
                 scoreUp();
             }else{
-                //not same
-               /* try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
                 cardOne.setBackground(getResources().getDrawable(R.drawable.def));
                 cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
             }
@@ -219,7 +213,8 @@ public class MultiPlayActivity extends AppCompatActivity {
 
     public void scoreUp(){
         score++;
-        scoreOut = (TextView) findViewById(R.id.timeOut);
+        scoreOut = (TextView) findViewById(R.id.scoreOut);
+
         scoreOut.setText("Time: " + score);
     }
 }
