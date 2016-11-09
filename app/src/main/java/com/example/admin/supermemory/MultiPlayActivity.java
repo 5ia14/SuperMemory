@@ -179,6 +179,8 @@ public class MultiPlayActivity extends AppCompatActivity {
                 removeCard(cardOne);
                 removeCard(cardTwo);
                 scoreUp();
+                cardOne = null;
+                cardTwo = null;
             }else{
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -186,11 +188,11 @@ public class MultiPlayActivity extends AppCompatActivity {
                     public void run() {
                         cardOne.setBackground(getResources().getDrawable(R.drawable.def));
                         cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
+                        cardOne = null;
+                        cardTwo = null;
                     }
-                }, 2000);
+                }, 1000);
             }
-            cardOne = null;
-            cardTwo = null;
         }
     }
 
@@ -213,17 +215,9 @@ public class MultiPlayActivity extends AppCompatActivity {
         return false;
     }
 
-    public boolean cardTurned(View view){
-        if(view.getBackground() != getResources().getDrawable(R.drawable.def)){
-            return true;
-        }
-        return false;
-    }
-//
     public void scoreUp(){
         score++;
         scoreOut = (TextView) findViewById(R.id.scoreOut);
-
         scoreOut.setText("Score: " + score);
     }
 }
