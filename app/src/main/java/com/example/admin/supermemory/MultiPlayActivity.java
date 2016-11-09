@@ -210,7 +210,7 @@ public class MultiPlayActivity extends AppCompatActivity {
         }
         return false;
     }
-
+//
     public void scoreUp(){
         score++;
         scoreOut = (TextView) findViewById(R.id.scoreOut);
