@@ -91,7 +91,6 @@ public class SinglePlayActivity extends AppCompatActivity {
     private ImageButton cardOne;
     private ImageButton cardTwo;
 
-
     private SensorManager mSensorManager;
     private float mAcceleration; // acceleration apart from gravity
     private float mAccelerationCurrent; // current acceleration including gravity
