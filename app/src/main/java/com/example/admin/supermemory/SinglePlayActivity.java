@@ -221,7 +221,11 @@ public class SinglePlayActivity extends AppCompatActivity {
                 score++;
             }else{
                 //not same
-                //Thread.sleep(3000);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 view.setBackground(getResources().getDrawable(R.drawable.def));
                 cardOne.setBackground(getResources().getDrawable(R.drawable.def));
                 cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
