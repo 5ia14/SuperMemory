@@ -86,6 +86,10 @@ public class MultiPlayActivity extends AppCompatActivity {
             View nextChild = linearLayout.getChildAt(index);
             ib.add((ImageButton) nextChild);
         }
+
+        linearLayout.removeAllViews();
+
+        shuffleCards();
     }
 
     @Override
@@ -152,10 +156,7 @@ public class MultiPlayActivity extends AppCompatActivity {
         int imageResource = getResources().getIdentifier(uri, null, getPackageName());
         Drawable res = getResources().getDrawable(imageResource);
 
-        // view.animate().rotationX(FULL_TURN).rotationY(FULL_TURN);
         view.setBackground(res);
-
-        view.clearAnimation();
     }
 
 }
