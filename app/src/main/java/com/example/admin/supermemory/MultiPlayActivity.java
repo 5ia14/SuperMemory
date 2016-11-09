@@ -206,7 +206,7 @@ public class MultiPlayActivity extends AppCompatActivity {
     public boolean sameCard(ImageButton card1, ImageButton card2){
         return card1.getTag() == card2.getTag();
     }
-
+//
     public void scoreUp(){
         score++;
         scoreOut = (TextView) findViewById(R.id.timeOut);
