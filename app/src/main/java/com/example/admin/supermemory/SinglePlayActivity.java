@@ -258,8 +258,7 @@ public class SinglePlayActivity extends AppCompatActivity {
 
     public void scoreUp(){
         score++;
-        scoreOut = (TextView) findViewById(R.id.scoreOut);
-        assert scoreOut != null;
-        scoreOut.setText(R.string.scoreLabelT + score);
+        scoreOut = (TextView) findViewById(R.id.timeOut);
+        scoreOut.setText("Time: " + score);
     }
 }
