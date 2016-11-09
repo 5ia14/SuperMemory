@@ -32,7 +32,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import com.example.admin.supermemory.model.*;
+
 /**
  * Created by Sadri on 03.11.2016.
  */
@@ -53,6 +55,7 @@ public class SinglePlayActivity extends AppCompatActivity {
 
     public final int HALF_TURN = 180;
     public final int QUARTER_TURN = 90;
+    public final int FULL_TURN = 360;
 
     private final SensorEventListener mSensorListener = new SensorEventListener() {
         public void onSensorChanged(SensorEvent se) {
@@ -163,30 +166,21 @@ public class SinglePlayActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void handleCardClick(View view) {
         String uri = "@drawable/" + view.getTag();
-
         int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-
         Drawable res = getResources().getDrawable(imageResource);
 
-        view.animate().rotationX(HALF_TURN).rotationY(HALF_TURN);
+        view.animate().rotationX(FULL_TURN).rotationY(FULL_TURN);
         view.setBackground(res);
 
-        if(cardOne == null){
+        if (cardOne == null) {
             cardOne = (ImageButton) view;
-        }else if(cardTwo == null && cardOne != null){
+        } else if (cardTwo == null) {
             cardTwo = (ImageButton) view;
-            if(sameCard(cardOne, cardTwo)){
-                //same
+            if (sameCard(cardOne, cardTwo)) {
                 removeCard(cardOne);
                 removeCard(cardTwo);
                 scoreUp();
-            }else{
-                //not same
-               /* try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
+            } else {
                 cardOne.setBackground(getResources().getDrawable(R.drawable.def));
                 cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
             }
@@ -195,21 +189,21 @@ public class SinglePlayActivity extends AppCompatActivity {
         }
     }
 
-    public void removeCard(ImageButton card){
+    public void removeCard(ImageButton card) {
         ViewGroup linearLayout = (ViewGroup) findViewById(R.id.memoryField);
-        for(int i=0; i< linearLayout.getChildCount(); i++) {
-            ImageButton child = (ImageButton)linearLayout.getChildAt(i);
-            if(child.equals(card)){
+        for (int i = 0; i < linearLayout.getChildCount(); i++) {
+            ImageButton child = (ImageButton) linearLayout.getChildAt(i);
+            if (child.equals(card)) {
                 linearLayout.removeViewAt(i);
             }
         }
     }
 
-    public boolean sameCard(ImageButton card1, ImageButton card2){
+    public boolean sameCard(ImageButton card1, ImageButton card2) {
         return card1.getTag() == card2.getTag();
     }
 
-    public void scoreUp(){
+    public void scoreUp() {
         score++;
         scoreOut = (TextView) findViewById(R.id.scoreOut);
         assert scoreOut != null;

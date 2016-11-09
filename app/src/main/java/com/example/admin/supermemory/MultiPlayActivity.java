@@ -161,30 +161,21 @@ public class MultiPlayActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void handleCardClick(View view) {
         String uri = "@drawable/" + view.getTag();
-
         int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-
         Drawable res = getResources().getDrawable(imageResource);
 
-        view.animate().rotationX(HALF_TURN).rotationY(HALF_TURN);
+        view.animate().rotationX(FULL_TURN).rotationY(FULL_TURN);
         view.setBackground(res);
 
         if(cardOne == null){
             cardOne = (ImageButton) view;
-        }else if(cardTwo == null && cardOne != null){
+        }else if(cardTwo == null){
             cardTwo = (ImageButton) view;
             if(sameCard(cardOne, cardTwo)){
-                //same
                 removeCard(cardOne);
                 removeCard(cardTwo);
                 scoreUp();
             }else{
-                //not same
-               /* try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
                 cardOne.setBackground(getResources().getDrawable(R.drawable.def));
                 cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
             }
