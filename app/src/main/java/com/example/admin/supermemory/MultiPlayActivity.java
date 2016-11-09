@@ -3,6 +3,7 @@ package com.example.admin.supermemory;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -136,13 +138,14 @@ public class MultiPlayActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void handleCardClick(View view) {
-        view.animate().rotationX(QUARTER_TURN).rotationY(QUARTER_TURN);
+        String uri = "@drawable/" + view.getTag();
 
-        ImageButton ib = (ImageButton) view;
-        String id = "" + ib.getId();
-        ib.setBackground(getDrawable(R.drawable.bild0));
+        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
 
-        view.animate().rotationX(QUARTER_TURN).rotationY(QUARTER_TURN);
+        Drawable res = getResources().getDrawable(imageResource);
+
+        view.animate().rotationX(HALF_TURN).rotationY(HALF_TURN);
+        view.setBackground(res);
     }
 
 }

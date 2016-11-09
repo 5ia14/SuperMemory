@@ -109,7 +109,7 @@ public class SinglePlayActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), "Shuffle", Toast.LENGTH_SHORT);
                 toast.show();
 
-                //shuffleCards();
+                shuffleCards();
 
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 v.vibrate(400);
@@ -129,7 +129,7 @@ public class SinglePlayActivity extends AppCompatActivity {
         mAccelerationLast = SensorManager.GRAVITY_EARTH;
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.multi_player);
+        setContentView(R.layout.activity_single_play);
 
         ViewGroup linearLayout = (ViewGroup) findViewById(R.id.memoryField);
         assert linearLayout != null;
@@ -138,8 +138,6 @@ public class SinglePlayActivity extends AppCompatActivity {
             View nextChild = linearLayout.getChildAt(index);
             ib.add((ImageButton) nextChild);
         }
-
-        // shuffleCards();
     }
 
     @Override
