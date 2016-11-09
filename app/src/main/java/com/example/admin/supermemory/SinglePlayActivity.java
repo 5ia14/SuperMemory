@@ -2,6 +2,7 @@ package com.example.admin.supermemory;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.util.Pair;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -211,5 +213,26 @@ public class SinglePlayActivity extends AppCompatActivity {
         scoreOut = (TextView) findViewById(R.id.scoreOut);
         assert scoreOut != null;
         scoreOut.setText("Score: " + score);
+        cardsAvailable();
+    }
+
+    public void cardsAvailable() {
+        ViewGroup linearLayout = (ViewGroup) findViewById(R.id.memoryField);
+        assert linearLayout != null;
+        if (linearLayout.getChildCount() == 0) {
+
+            AlertDialog alertDialog = new AlertDialog.Builder(SinglePlayActivity.this).create();
+            alertDialog.setTitle("Gewonnen!");
+            alertDialog.setMessage("Sie haben alle Karten richtig aufgedeckt!");
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Back",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+
+                            showMain(null);
+                        }
+                    });
+            alertDialog.show();
+        }
     }
 }
