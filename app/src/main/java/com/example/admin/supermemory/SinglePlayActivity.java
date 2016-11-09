@@ -218,8 +218,6 @@ public class SinglePlayActivity extends AppCompatActivity {
                 //same
                 removeCard(cardOne);
                 removeCard(cardTwo);
-                cardOne = null;
-                cardTwo = null;
                 score++;
             }else{
                 //not same
@@ -228,6 +226,8 @@ public class SinglePlayActivity extends AppCompatActivity {
                 cardOne.setBackground(getResources().getDrawable(R.drawable.def));
                 cardTwo.setBackground(getResources().getDrawable(R.drawable.def));
             }
+            cardOne = null;
+            cardTwo = null;
         }
     }
 
